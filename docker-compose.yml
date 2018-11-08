@@ -1,4 +1,6 @@
 version: '2.1'
+volumes:
+  printer:
 services:
   printer:
     build: .
@@ -6,7 +8,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - /root/.3dprinteros
+      - printer:/root/.3dprinteros/
     devices:
       - /dev/bus/usb
     privileged: true
