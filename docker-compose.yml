@@ -1,0 +1,12 @@
+version: '3.6'
+services:
+  printer:
+    build: .
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /root/.3dprinteros
+    devices:
+      - /dev/bus/usb
+    privileged: true
