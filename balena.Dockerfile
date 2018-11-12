@@ -3,7 +3,8 @@ RUN apk add unzip
 ADD https://client-cdn-3dprinteros.azureedge.net/releases/3DPrinterOS_Client_6.0.16.107_dev.zip 3dprinteros_client.zip
 RUN unzip 3dprinteros_client.zip -d extract
 
-FROM python:2.7
+ARG BALENA_MACHINE_NAME
+FROM resin/${BALENA_MACHINE_NAME:-raspberrypi3}-ubuntu-python:2.7.15-xenial
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python-numpy \
 	libopencv-dev \

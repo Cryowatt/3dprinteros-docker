@@ -3,7 +3,11 @@ volumes:
   printer:
 services:
   printer:
-    build: .
+    build:
+      context: .
+      dockerfile: balena.Dockerfile
+      args:
+        BALENA_MACHINE_NAME: raspberrypi3
     ports:
       - 80:80
       - 443:443
