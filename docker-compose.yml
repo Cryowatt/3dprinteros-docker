@@ -17,4 +17,5 @@ services:
       - printer:/root/.3dprinteros/
     devices:
       - /dev/bus/usb
+      - /dev/ttyUSB0
     privileged: true
