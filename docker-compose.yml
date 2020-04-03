@@ -1,15 +1,11 @@
-version: '2.1'
+version: '3.6'
 
 volumes:
   printer:
 
 services:
   printer:
-    build:
-      context: .
-      dockerfile: balena.Dockerfile
-      args:
-        BALENA_MACHINE_NAME: raspberrypi3
+    image: cryowatt/3dprinteros:6.2.3.163_stable-arm
     ports:
       - 80:80
       - 443:443
