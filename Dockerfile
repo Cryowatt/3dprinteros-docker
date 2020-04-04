@@ -5,10 +5,9 @@ ARG CLIENT_VERSION
 ADD https://client-cdn-3dprinteros.azureedge.net/releases/3DPrinterOS_Client_${CLIENT_VERSION}.zip 3dprinteros_client.zip
 RUN unzip 3dprinteros_client.zip -d extract
 
-FROM python:2.7
+FROM python:2.7-slim-stretch AS 3dprinteros
 RUN apt-get update && apt-get install -y --no-install-recommends \
-	libopencv-dev \
-    libusb-dev \
+    libusb-1.0-0 \
     python-numpy \
 	python-opencv \
     xterm \

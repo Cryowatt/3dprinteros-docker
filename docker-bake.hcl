@@ -1,22 +1,38 @@
 group "default" {
-	targets = ["printer-amd64", "printer-arm"]
+	targets = ["stable", "development", "beta"]
 }
 
-target "printer" {
+target "3dprinteros" {
 	dockerfile = "Dockerfile"
+    target = "3dprinteros"
+}
+
+target "beta" {
+    inherit = "3dprinteros"
+	platforms = ["linux/amd64", "linux/arm/v7"]
+    args {
+        CLIENT_VERSION = "7.2.6.215_beta"
+    }
+	tags = ["cryowatt/3dprinteros:7.2.6.215", "cryowatt/3dprinteros:beta"]
+    output =["type=image,push=true"]
+}
+
+target "development" {
+    inherit = "3dprinteros"
+	platforms = ["linux/amd64", "linux/arm/v7"]
+    args {
+        CLIENT_VERSION = "6.2.4.166_dev"
+    }
+	tags = ["cryowatt/3dprinteros:6.2.4.166", "cryowatt/3dprinteros:development"]
+    output =["type=image,push=true"]
+}
+
+target "stable" {
+    inherit = "3dprinteros"
+	platforms = ["linux/amd64", "linux/arm/v7"]
     args {
         CLIENT_VERSION = "6.2.3.163_stable"
     }
-}
-
-target "printer-amd64" {
-	inherits = ["printer"]
-	tags = ["cryowatt/3dprinteros:6.2.3.163_stable"]
-	platforms = ["linux/amd64"]
-}
-
-target "printer-arm" {
-	inherits = ["printer"]
-	tags = ["cryowatt/3dprinteros:6.2.3.163_stable-arm64"]
-	platforms = ["linux/arm64"]
+	tags = ["cryowatt/3dprinteros:6.2.3.163", "cryowatt/3dprinteros:stable"]
+    output =["type=image,push=true"]
 }
