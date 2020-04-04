@@ -4,12 +4,11 @@ group "default" {
 
 target "3dprinteros" {
 	dockerfile = "Dockerfile"
-    target = "3dprinteros"
 }
 
 target "beta" {
     inherit = "3dprinteros"
-	platforms = ["linux/amd64", "linux/arm/v7"]
+	platforms = ["linux/arm/v7"]
     args {
         CLIENT_VERSION = "7.2.6.215_beta"
     }
@@ -19,7 +18,7 @@ target "beta" {
 
 target "development" {
     inherit = "3dprinteros"
-	platforms = ["linux/amd64", "linux/arm/v7"]
+	platforms = ["linux/arm/v7"]
     args {
         CLIENT_VERSION = "6.2.4.166_dev"
     }
@@ -29,7 +28,7 @@ target "development" {
 
 target "stable" {
     inherit = "3dprinteros"
-	platforms = ["linux/amd64", "linux/arm/v7"]
+	platforms = ["linux/arm/v7"]
     args {
         CLIENT_VERSION = "6.2.3.163_stable"
     }
