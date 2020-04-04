@@ -8,10 +8,10 @@ RUN unzip 3dprinteros_client.zip -d extract
 FROM python:3-slim-stretch AS python3
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libusb-1.0-0 \
-    procps \
-    python-numpy \
-	python-opencv \
-    xterm \
+    #procps \
+    #python-numpy \
+	#python-opencv \
+    #xterm \
     && apt-get clean
 COPY --from=package extract /opt/3dprinteros-client
 WORKDIR /opt/3dprinteros-client/
@@ -22,10 +22,11 @@ EXPOSE 80 443
 FROM python:2.7-slim-stretch AS python2
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libusb-1.0-0 \
-    procps \
-    python-numpy \
-	python-opencv \
-    xterm \
+    #procps \
+    #python-numpy \
+	#python-opencv \
+    #cython \
+    #xterm \
     && apt-get clean
 COPY --from=package extract /opt/3dprinteros-client
 WORKDIR /opt/3dprinteros-client/
