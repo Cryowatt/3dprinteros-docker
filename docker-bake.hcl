@@ -9,6 +9,7 @@ target "3dprinteros" {
 target "beta" {
     inherit = "3dprinteros"
 	platforms = ["linux/arm/v7"]
+    target = "python3"
     args {
         CLIENT_VERSION = "7.2.6.215_beta"
     }
@@ -19,6 +20,7 @@ target "beta" {
 target "development" {
     inherit = "3dprinteros"
 	platforms = ["linux/arm/v7"]
+    target = "python2"
     args {
         CLIENT_VERSION = "6.2.4.166_dev"
     }
@@ -29,6 +31,7 @@ target "development" {
 target "stable" {
     inherit = "3dprinteros"
 	platforms = ["linux/arm/v7"]
+    target = "python2"
     args {
         CLIENT_VERSION = "6.2.3.163_stable"
     }
