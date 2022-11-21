@@ -1,0 +1,39 @@
+version: '3.7'
+
+volumes:
+  printer:
+
+services:
+  printer-beta:
+    build:
+      context: .
+      target: python3
+      args:
+        PYTHON_IMAGE: python:3-slim-stretch
+        CLIENT_VERSION: "7.2.6.215_beta"
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - printer:/root/.3dprinteros/
+    devices:
+      - /dev/bus/usb
+      - /dev/ttyUSB0
+    privileged: true
+
+  printer:
+    build:
+      context: .
+      target: python2
+      args:
+        PYTHON_IMAGE: python:2.7-slim-stretch
+        CLIENT_VERSION: "6.2.3.163_stable"
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - printer:/root/.3dprinteros/
+    devices:
+      - /dev/bus/usb
+      - /dev/ttyUSB0
+    privileged: true

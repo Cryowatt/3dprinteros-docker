@@ -5,7 +5,10 @@ volumes:
 
 services:
   printer:
-    image: cryowatt/3dprinteros:6.2.4.166
+    build:
+      context: .
+      args:
+        CLIENT_VERSION: "7.9.0.384"
     ports:
       - 80:80
       - 443:443
